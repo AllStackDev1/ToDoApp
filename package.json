@@ -1,0 +1,22 @@
+{
+  "name": "apptodo",
+  "version": "1.0.0",
+  "description": "A simple To Do App with nextjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest --watch --env=jsdom"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MrCEO63/ToDoApp.git"
+  },
+  "keywords": [
+    "TODO"
+  ],
+  "author": "Chinedu Ekene Okpala",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/MrCEO63/ToDoApp/issues"
+  },
+  "homepage": "https://github.com/MrCEO63/ToDoApp#readme"
+}
