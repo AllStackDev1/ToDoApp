@@ -15,10 +15,11 @@ const INIT_STATE = {
 };
 
 const todoApp = (state = INIT_STATE, action) => {
-  var updatedlist = [];
+  let updatedlist = [];
+  let prevItems = [];
   switch (action.type) {
     case ADD_TODO_ITEM:
-      var prevItems = JSON.parse(localStorage.getItem('todoItems'));
+      prevItems = JSON.parse(localStorage.getItem('todoItems'));
       if (prevItems && typeof prevItems == 'object') {
         updatedlist = [...prevItems];
         updatedlist.push(action.payload);
@@ -28,10 +29,10 @@ const todoApp = (state = INIT_STATE, action) => {
       localStorage.setItem('todoItems', JSON.stringify(updatedlist));
       return { ...state, message: null, todoItems: updatedlist };
     case GET_TODO_LIST:
-      var prevItems = JSON.parse(localStorage.getItem('todoItems'));
+      prevItems = JSON.parse(localStorage.getItem('todoItems'));
       return { ...state, message: null, todoItems: prevItems };
     case MARK_SELECTED_TODO_ITEMS_DONE:
-      var prevItems = JSON.parse(localStorage.getItem('todoItems'));
+      prevItems = JSON.parse(localStorage.getItem('todoItems'));
       action.payload.some(t => {
         prevItems.some((e, i) => {
           if (t === i) {
@@ -45,7 +46,7 @@ const todoApp = (state = INIT_STATE, action) => {
       localStorage.setItem('todoItems', JSON.stringify(updatedlist));
       return { ...state, message: null, todoItems: updatedlist };
     case UNMARK_SELECTED_TODO_ITEMS_DONE:
-      var prevItems = JSON.parse(localStorage.getItem('todoItems'));
+      prevItems = JSON.parse(localStorage.getItem('todoItems'));
       action.payload.some(t => {
         prevItems.some((e, i) => {
           if (t === i) {
@@ -58,13 +59,13 @@ const todoApp = (state = INIT_STATE, action) => {
       localStorage.setItem('todoItems', JSON.stringify(updatedlist));
       return { ...state, message: null, todoItems: updatedlist };
     case EDIT_TODO_ITEM:
-      var prevItems = JSON.parse(localStorage.getItem('todoItems'));
+      prevItems = JSON.parse(localStorage.getItem('todoItems'));
       const { index, item } = action.payload;
       updatedlist = prevItems.splice(index, 1, item);
       localStorage.setItem('todoItems', JSON.stringify(updatedlist));
       return { ...state, message: null, todoItems: updatedlist };
     case DELETE_SELECTED_TODO_ITEMS:
-      var prevItems = JSON.parse(localStorage.getItem('todoItems'));
+      prevItems = JSON.parse(localStorage.getItem('todoItems'));
       let text = action.payload.length > 1 ? 'these' : 'this';
       if (action.payload.length > 0 && confirm(`Are you sure you want to remove ${text} item?`)) {
         while (action.payload.length) {
