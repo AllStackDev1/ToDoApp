@@ -9,11 +9,11 @@ import { faCheckCircle, faSyncAlt } from '@fortawesome/free-solid-svg-icons';
 library.add(faCheckCircle, faSyncAlt);
 
 import 'bootstrap/dist/css/bootstrap.css';
+import 'react-datepicker/dist/react-datepicker.css';
 import '../static/css/styles.css';
 
 class Main extends App {
   static async getInitialProps({ Component, ctx }) {
-    // ctx.store.dispatch();
     const pageProps = Component.getInitialProps ? await Component.getInitialProps(ctx) : {};
     return { pageProps };
   }

@@ -1,6 +1,7 @@
 body {
   margin: 20px;
   font-family: Nunito, sans-serif;
+  color: #645252bf;
 }
 .container {
   background: #eeeeee;
@@ -28,7 +29,12 @@ body {
 }
 .list-item-heading > span.badge {
   padding: 10px;
+  margin-left: 35px;
   text-transform: uppercase;
+}
+.list-item-heading > svg {
+  font-size: 30px;
+  position: absolute;
 }
 .card-body > .card > .card-body {
   border: 3px solid rgba(0, 0, 0, 0.125);
@@ -48,4 +54,42 @@ body {
   outline: initial;
   border-radius: 0.25rem;
   border: 1px solid #ced4da;
+}
+
+.custom-control-label:after,
+.custom-control-label:before {
+  left: 0;
+  background-color: unset;
+}
+.custom-control-label:before {
+  border: 1px solid #fff !important;
+}
+.check-button {
+  padding-top: 0.25rem;
+  padding-bottom: 0.25rem;
+}
+.custom-checkbox .custom-control-label.indeterminate::after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 4'%3E%3Cpath stroke='%23FFFFFF' d='M0 2h4'/%3E%3C/svg%3E");
+}
+
+.itemCheck .custom-control-label:before {
+  border: 1px solid #909090 !important;
+  background: initial !important;
+}
+.itemCheck
+  .custom-checkbox
+  .custom-control-input:checked
+  ~ .custom-control-label:after {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' v…M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+}
+.itemCheck .custom-control-input:checked ~ .custom-control-label:after {
+  border-radius: 25%;
+  background-color: #007bff;
+  box-shadow: none !important;
+}
+.font-secondary {
+  color: #6c757d;
+}
+.font-success {
+  color: #28a745;
 }

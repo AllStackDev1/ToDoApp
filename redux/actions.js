@@ -1,21 +1,42 @@
-import { ADD_TODO_ITEM, GET_TODO_ITEM, EDIT_TODO_ITEM, DELETE_TODO_ITEM } from './actionTypes';
+import {
+  ADD_TODO_ITEM,
+  MARK_SELECTED_TODO_ITEMS_DONE,
+  UNMARK_SELECTED_TODO_ITEMS_DONE,
+  GET_TODO_LIST,
+  EDIT_TODO_ITEM,
+  DELETE_SELECTED_TODO_ITEMS,
+  CLEAR_ALL
+} from './actionTypes';
 
-export const addTodoItem = item => ({
+export const addTodoItem = newItem => ({
   type: ADD_TODO_ITEM,
-  payload: item
+  payload: newItem
 });
 
-export const getTodoList = list => ({
-  type: GET_TODO_ITEM,
-  payload: list
+export const getTodoList = () => ({
+  type: GET_TODO_LIST
 });
 
-export const editTodoItem = data => ({
+export const markSeletedTodoItemsDone = indexs => ({
+  type: MARK_SELECTED_TODO_ITEMS_DONE,
+  payload: indexs
+});
+
+export const unmarkSeletedTodoItemsDone = indexs => ({
+  type: UNMARK_SELECTED_TODO_ITEMS_DONE,
+  payload: indexs
+});
+
+export const editTodoItem = (index, item) => ({
   type: EDIT_TODO_ITEM,
-  payload: data
+  payload: { index, item }
 });
 
-export const deleteTodoItem = id => ({
-  type: DELETE_TODO_ITEM,
-  payload: id
+export const deleteSelectedTodoItems = indexs => ({
+  type: DELETE_SELECTED_TODO_ITEMS,
+  payload: indexs.sort()
+});
+
+export const clearAll = () => ({
+  type: CLEAR_ALL
 });
